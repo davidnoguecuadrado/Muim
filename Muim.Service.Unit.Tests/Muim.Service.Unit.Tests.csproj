@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Muim.Aplication\Muim.Aplication.csproj" />
     <ProjectReference Include="..\Muim.Service\Muim.Service.csproj" />
   </ItemGroup>
 

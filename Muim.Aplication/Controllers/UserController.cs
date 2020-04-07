@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Muim.Aplication.Contracts;
 using Muim.Domain.Models;
 using Muim.Service.Contracts;
 
@@ -7,7 +8,7 @@ namespace Muim.Aplication.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController : ControllerBase,IUserController
     {
         private readonly IUserService _serviceUser;
 

@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Muim.Data.UnitTests", "Muim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Muim.Service.Unit.Tests", "Muim.Service.Unit.Tests\Muim.Service.Unit.Tests.csproj", "{17141729-9CC7-4D4C-9478-2DC33A241351}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Muim.Aplication.Unit.Tests", "Muim.Aplication.Unit.Tests\Muim.Aplication.Unit.Tests.csproj", "{7CC89D08-E423-4CCD-9459-D7D22695F2B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{17141729-9CC7-4D4C-9478-2DC33A241351}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17141729-9CC7-4D4C-9478-2DC33A241351}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17141729-9CC7-4D4C-9478-2DC33A241351}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CC89D08-E423-4CCD-9459-D7D22695F2B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CC89D08-E423-4CCD-9459-D7D22695F2B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CC89D08-E423-4CCD-9459-D7D22695F2B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CC89D08-E423-4CCD-9459-D7D22695F2B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +86,7 @@ Global
 		{282DA97B-5612-4B24-8503-5E7F973ED729} = {D741F466-A583-4AFC-B671-8ACD73843DFA}
 		{FD67E92B-BD1F-49A7-95DB-036247EDE495} = {D741F466-A583-4AFC-B671-8ACD73843DFA}
 		{17141729-9CC7-4D4C-9478-2DC33A241351} = {D0A19622-9636-4BD6-AD37-7DAE23F56C9D}
+		{7CC89D08-E423-4CCD-9459-D7D22695F2B0} = {A96609BE-F1C6-4D3E-AF7E-9029BDB6B432}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60B57846-9ADD-49B5-BF4C-2396B0A8A250}
