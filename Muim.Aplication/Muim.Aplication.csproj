@@ -17,7 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Muim.Data\Muim.Data.csproj" />
     <ProjectReference Include="..\Muim.Domain\Muim.Domain.csproj" />
+    <ProjectReference Include="..\Muim.Service\Muim.Service.csproj" />
   </ItemGroup>
 
 

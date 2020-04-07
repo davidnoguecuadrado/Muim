@@ -10,7 +10,7 @@ namespace Muim.Domain.Context
 
         }
 
-        public DbSet<Capacidad> Canciones {get; set;}
+        public DbSet<Capacidad> Capacidades {get; set;}
         public DbSet<Equipo> Equipos { get; set; }
         public DbSet<HabilidadActiva> HabilidadActivas { get; set; }
         public DbSet<HabilidadPasiva> HabilidadPasivas { get; set; }
@@ -18,6 +18,7 @@ namespace Muim.Domain.Context
         public DbSet<Personaje> Personajes { get; set; }
         public DbSet<Raza> Razas { get; set; }
         public DbSet<Tipo> Tipos { get; set; }
+       
         public DbSet<User> Users { get; set; }
         public DbSet<Partida> Partidas { get; set; }
         public DbSet<PUP> Pup { get; set; }
@@ -26,6 +27,10 @@ namespace Muim.Domain.Context
         public DbSet<PersonajesCapacidades> PersonajesCapacidades { get; set; }
         public DbSet<MagiaPersonajes> MagiaPersonajes { get; set; }
         public DbSet<PartidaUsuario> PartidaUsuario { get; set; }
+        public DbSet<ClassCharacter> ClassCharacter { get; set; }
+
+        public DbSet<ClassCharacterCpacidades> ClassCharacterCpacidades { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<PersonajeHabilidadActiva>().HasKey(x=> new {x.HabilidadActivaInt,x.PersonajeId });
@@ -34,6 +39,8 @@ namespace Muim.Domain.Context
             modelBuilder.Entity<MagiaPersonajes>().HasKey(x => new { x.PersonajeId, x.MagiaId });
             modelBuilder.Entity<PartidaUsuario>().HasKey(x => new { x.UserId, x.ParitdaId });
             modelBuilder.Entity<PUP>().HasKey(x => new { x.ParitdaId, x.PersonajeId,x.UserId });
+            modelBuilder.Entity<ClassCharacterCpacidades>().HasKey(x => new { x.CapacidadId, x.ClassCharacterId });
+            modelBuilder.Entity<User>().HasKey(x => new { x.UserId });
 
         }
     }

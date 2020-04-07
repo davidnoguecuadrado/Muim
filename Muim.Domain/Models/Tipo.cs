@@ -10,7 +10,6 @@ namespace Muim.Domain.Models
 
         public Raza Raza { get; set; }
         public int RazaId { get; set; }
-        public List<Capacidad> Capacidades{get; set;}
         public Personaje Personaje { get; set; }
 
     }
