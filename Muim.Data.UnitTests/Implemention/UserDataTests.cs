@@ -2,6 +2,7 @@
 using Moq;
 using Muim.Data.Contracts;
 using Muim.Domain.Models;
+using System.Collections.Generic;
 
 namespace Muim.Data.UnitTests
 {
@@ -10,15 +11,20 @@ namespace Muim.Data.UnitTests
     {
         private Mock<IUserData> _useData;
         private User _user;
+        private List<User> _users;
 
         [TestInitialize]
         public void TestInitialize()
         {
             _user = new User();
+            _users = new List<User>();
             _useData = new Mock<IUserData>();
             
             _useData.Setup(p => p.AddUser(It.IsAny<User>())).Returns(true);
-
+            _useData.Setup(p => p.GetUser(It.IsAny<int>())).Returns(_user);
+            _useData.Setup(p => p.DeleteUser(It.IsAny<int>())).Returns(true);
+            _useData.Setup(p => p.GetAllUsers()).Returns(_users);
+            _useData.Setup(p => p.UpdateUser(It.IsAny<User>())).Returns(true);
 
         }
 
@@ -26,19 +32,22 @@ namespace Muim.Data.UnitTests
         [TestMethod()]
         public void GetUserTest()
         {
-            Assert.Fail();
+            var userGet=_useData.Object.GetUser(1);
+            Assert.IsTrue(userGet.Equals(_user)); 
         }
 
         [TestMethod()]
         public void DeleteUserTest()
         {
-            Assert.Fail();
+            var result = _useData.Object.DeleteUser(1);
+            Assert.IsTrue(result);
         }
 
         [TestMethod()]
         public void GetAllUsersTest()
         {
-            Assert.Fail();
+            var userGet = _useData.Object.GetAllUsers();
+            Assert.IsTrue(userGet.Equals(_users));
         }
 
         [TestMethod()]
@@ -51,7 +60,8 @@ namespace Muim.Data.UnitTests
         [TestMethod()]
         public void UpdateUserTest()
         {
-            Assert.Fail();
+            var result = _useData.Object.UpdateUser(_user);
+            Assert.IsTrue(result);
         }
     }
 }
