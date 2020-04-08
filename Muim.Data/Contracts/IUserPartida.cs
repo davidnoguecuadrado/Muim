@@ -8,7 +8,7 @@ namespace Muim.Data.Contracts
     {
         bool AddUserPartida(PartidaUsuario partidauser);
         bool DeleteUser(int id);
-        List<PartidaUsuario> GetPartidaUsuario();
+        List<PartidaUsuario> GetPartidaUsuario(int id);
 
     }
 }
