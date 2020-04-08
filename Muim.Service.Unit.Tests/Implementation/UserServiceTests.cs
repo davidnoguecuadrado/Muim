@@ -25,8 +25,8 @@ namespace Muim.Service.Implementation.Unit.Tests
             _useData.Setup(p => p.DeleteUser(It.IsAny<int>())).Returns(true);
             _useData.Setup(p => p.GetAllUsers()).Returns(_users);
             _useData.Setup(p => p.UpdateUser(It.IsAny<User>(), It.IsAny<int>())).Returns(true);
-
         }
+
         [TestMethod()]
         public void GetUserTest()
         {

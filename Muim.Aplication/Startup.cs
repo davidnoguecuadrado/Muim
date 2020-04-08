@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Muim.Data;
 using Muim.Data.Contracts;
+using Muim.Data.Implemention;
 using Muim.Domain.Context;
 using Muim.Service.Contracts;
 using Muim.Service.Implementation;
@@ -44,6 +45,8 @@ namespace Muim.Aplication
             services.AddTransient<IContextDb, ContextoDb>();
             services.AddTransient<IUserData, UserData>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IPartidaData, PartidaData>();
+            services.AddTransient<IUserPartida, UserPartida>();
 
             services.AddDbContext<ContextoDb>(o => o.UseSqlServer("Server =.; Database = Muimdb; User Id = sa; password = yourStrong(!)Password; Trusted_Connection = False; MultipleActiveResultSets = true"));
             
