@@ -20,7 +20,7 @@ namespace Muim.Data.Implemention.Unit.Tests
             _partidas = new List<Partida>();
             _partidaData = new Mock<IPartidaData>();
 
-            _partidaData.Setup(p => p.AddPartida(It.IsAny<Partida>())).Returns(true);
+            _partidaData.Setup(p => p.AddPartida(It.IsAny<Partida>())).Returns(_partida);
             _partidaData.Setup(p => p.GetPartida(It.IsAny<int>())).Returns(_partida);
             _partidaData.Setup(p => p.DeletePartida(It.IsAny<int>())).Returns(true);
             _partidaData.Setup(p => p.GetAllPartida()).Returns(_partidas);
@@ -53,7 +53,7 @@ namespace Muim.Data.Implemention.Unit.Tests
         public void AddUserTest()
         {
             var result = _partidaData.Object.AddPartida(_partida);
-            Assert.IsTrue(result);
+            Assert.AreEqual(result, _partida);
         }
 
         [TestMethod()]

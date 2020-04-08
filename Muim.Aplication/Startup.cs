@@ -42,11 +42,13 @@ namespace Muim.Aplication
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                 };
             });
+
             services.AddTransient<IContextDb, ContextoDb>();
             services.AddTransient<IUserData, UserData>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IPartidaData, PartidaData>();
             services.AddTransient<IUserPartida, UserPartida>();
+            services.AddTransient<IPartidaUsuarios, PartidaUsuarios>();
 
             services.AddDbContext<ContextoDb>(o => o.UseSqlServer("Server =.; Database = Muimdb; User Id = sa; password = yourStrong(!)Password; Trusted_Connection = False; MultipleActiveResultSets = true"));
             
