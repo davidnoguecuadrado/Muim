@@ -41,6 +41,9 @@ namespace Muim.Domain.Models
         public int? TipoId { get; set; }
         public Tipo Tipo { get; set; }
 
+        [ForeignKey("ClassCharacterId")]
+        public int? ClassCharacterId { get; set; }
+        public ClassCharacter classCharacter { get; set; }
 
 
         public List<Equipo> Equipos { get; set; }

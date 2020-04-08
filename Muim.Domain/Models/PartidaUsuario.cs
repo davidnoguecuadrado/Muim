@@ -9,7 +9,7 @@ namespace Muim.Domain.Models
         public User User { get; set; }
         public int UserId { get; set; }
         public Partida Partida { get; set; }
-        public int ParitdaId { get; set; }
+        public int PartidaId { get; set; }
         public int Rol { get; set;}
     }
 }

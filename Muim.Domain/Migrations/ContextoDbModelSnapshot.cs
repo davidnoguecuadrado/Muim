@@ -26,20 +26,53 @@ namespace Muim.Domain.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("ClassCharacterId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TipoId")
-                        .HasColumnType("int");
-
                     b.HasKey("CapacidadId");
 
-                    b.HasIndex("TipoId");
+                    b.HasIndex("ClassCharacterId");
 
-                    b.ToTable("Canciones");
+                    b.ToTable("Capacidades");
+                });
+
+            modelBuilder.Entity("Muim.Domain.Models.ClassCharacter", b =>
+                {
+                    b.Property<int>("ClassCharacterId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ClassCharacterId");
+
+                    b.ToTable("ClassCharacter");
+                });
+
+            modelBuilder.Entity("Muim.Domain.Models.ClassCharacterCpacidades", b =>
+                {
+                    b.Property<int>("CapacidadId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ClassCharacterId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CapacidadId", "ClassCharacterId");
+
+                    b.HasIndex("ClassCharacterId");
+
+                    b.ToTable("ClassCharacterCpacidades");
                 });
 
             modelBuilder.Entity("Muim.Domain.Models.Equipo", b =>
@@ -142,7 +175,7 @@ namespace Muim.Domain.Migrations
 
             modelBuilder.Entity("Muim.Domain.Models.PUP", b =>
                 {
-                    b.Property<int>("ParitdaId")
+                    b.Property<int>("PartidaId")
                         .HasColumnType("int");
 
                     b.Property<int>("PersonajeId")
@@ -151,19 +184,11 @@ namespace Muim.Domain.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PartidaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("ParitdaId", "PersonajeId", "UserId");
-
-                    b.HasIndex("PartidaId");
+                    b.HasKey("PartidaId", "PersonajeId", "UserId");
 
                     b.HasIndex("PersonajeId");
 
-                    b.HasIndex("UserName");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Pup");
                 });
@@ -178,6 +203,9 @@ namespace Muim.Domain.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("PartidaId");
 
                     b.ToTable("Partidas");
@@ -188,23 +216,15 @@ namespace Muim.Domain.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ParitdaId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PartidaId")
+                    b.Property<int>("PartidaId")
                         .HasColumnType("int");
 
                     b.Property<int>("Rol")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("UserId", "ParitdaId");
+                    b.HasKey("UserId", "PartidaId");
 
                     b.HasIndex("PartidaId");
-
-                    b.HasIndex("UserName");
 
                     b.ToTable("PartidaUsuario");
                 });
@@ -226,6 +246,9 @@ namespace Muim.Domain.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("BaseDeKan")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ClassCharacterId")
                         .HasColumnType("int");
 
                     b.Property<int>("Constitución")
@@ -304,6 +327,8 @@ namespace Muim.Domain.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("PersonajeId");
+
+                    b.HasIndex("ClassCharacterId");
 
                     b.HasIndex("TipoId")
                         .IsUnique()
@@ -413,8 +438,13 @@ namespace Muim.Domain.Migrations
 
             modelBuilder.Entity("Muim.Domain.Models.User", b =>
                 {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
@@ -422,19 +452,31 @@ namespace Muim.Domain.Migrations
                     b.Property<int>("Tipo")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Name");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Muim.Domain.Models.Capacidad", b =>
                 {
-                    b.HasOne("Muim.Domain.Models.Tipo", null)
+                    b.HasOne("Muim.Domain.Models.ClassCharacter", null)
                         .WithMany("Capacidades")
-                        .HasForeignKey("TipoId");
+                        .HasForeignKey("ClassCharacterId");
+                });
+
+            modelBuilder.Entity("Muim.Domain.Models.ClassCharacterCpacidades", b =>
+                {
+                    b.HasOne("Muim.Domain.Models.Capacidad", "Capacidad")
+                        .WithMany()
+                        .HasForeignKey("CapacidadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Muim.Domain.Models.ClassCharacter", "ClassCharacter")
+                        .WithMany()
+                        .HasForeignKey("ClassCharacterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Muim.Domain.Models.Equipo", b =>
@@ -465,7 +507,9 @@ namespace Muim.Domain.Migrations
                 {
                     b.HasOne("Muim.Domain.Models.Partida", "Partida")
                         .WithMany()
-                        .HasForeignKey("PartidaId");
+                        .HasForeignKey("PartidaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Muim.Domain.Models.Personaje", "Personaje")
                         .WithMany()
@@ -475,22 +519,32 @@ namespace Muim.Domain.Migrations
 
                     b.HasOne("Muim.Domain.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserName");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Muim.Domain.Models.PartidaUsuario", b =>
                 {
                     b.HasOne("Muim.Domain.Models.Partida", "Partida")
                         .WithMany()
-                        .HasForeignKey("PartidaId");
+                        .HasForeignKey("PartidaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Muim.Domain.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserName");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Muim.Domain.Models.Personaje", b =>
                 {
+                    b.HasOne("Muim.Domain.Models.ClassCharacter", "classCharacter")
+                        .WithMany()
+                        .HasForeignKey("ClassCharacterId");
+
                     b.HasOne("Muim.Domain.Models.Tipo", "Tipo")
                         .WithOne("Personaje")
                         .HasForeignKey("Muim.Domain.Models.Personaje", "TipoId");

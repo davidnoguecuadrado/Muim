@@ -6,7 +6,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Muim.Data;
+using Muim.Data.Contracts;
 using Muim.Domain.Context;
+using Muim.Service.Contracts;
+using Muim.Service.Implementation;
 using System.Text;
 
 namespace Muim.Aplication
@@ -38,8 +42,10 @@ namespace Muim.Aplication
                 };
             });
             services.AddTransient<IContextDb, ContextoDb>();
-      
-            services.AddDbContext<ContextoDb>(o => o.UseSqlServer(Configuration["ConnectionString:defaultConnection"]));
+            services.AddTransient<IUserData, UserData>();
+            services.AddTransient<IUserService, UserService>();
+
+            services.AddDbContext<ContextoDb>(o => o.UseSqlServer("Server =.; Database = Muimdb; User Id = sa; password = yourStrong(!)Password; Trusted_Connection = False; MultipleActiveResultSets = true"));
             
             services.AddControllers();
         }
