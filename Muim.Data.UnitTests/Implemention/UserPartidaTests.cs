@@ -21,7 +21,7 @@ namespace Muim.Data.Implemention.Unit.Tests
             _usePartidaUsuarioData = new Mock<IUserPartida>();
 
             _usePartidaUsuarioData.Setup(p => p.AddUserPartida(It.IsAny<PartidaUsuario>())).Returns(true);
-            _usePartidaUsuarioData.Setup(p => p.GetPartidaUsuario()).Returns(_usersPartidas);
+            _usePartidaUsuarioData.Setup(p => p.GetPartidaUsuario(1)).Returns(_usersPartidas);
             _usePartidaUsuarioData.Setup(p => p.DeleteUser(It.IsAny<int>())).Returns(true);
 
         }
@@ -42,7 +42,7 @@ namespace Muim.Data.Implemention.Unit.Tests
         [TestMethod()]
         public void GetPartidaUsuarioTest()
         {
-            var userGet = _usePartidaUsuarioData.Object.GetPartidaUsuario();
+            var userGet = _usePartidaUsuarioData.Object.GetPartidaUsuario(1);
             Assert.IsTrue(userGet.Equals(_usersPartidas));
         }
     }

@@ -1,7 +1,5 @@
 ﻿using Muim.Domain.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Muim.Service.Contracts
 {

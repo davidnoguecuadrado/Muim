@@ -14,11 +14,11 @@ namespace Muim.Data.Implemention
         {
             _contextDb = contextDb;
         }
-        public bool AddPartida(Partida partida)
+        public Partida AddPartida(Partida partida)
         {
-            _contextDb.Partidas.Add(partida);
+            var part= _contextDb.Partidas.Add(partida);
             _contextDb.SaveChanges();
-            return true;
+            return part.Entity;
         }
 
         public bool DeletePartida(int id)
@@ -45,6 +45,12 @@ namespace Muim.Data.Implemention
         public Partida GetPartida(int id)
         {
             var partida = _contextDb.Partidas.Find(id);
+            return partida;
+        }
+
+        public Partida AddPartidaPassword(string password,int idPartida)
+        {
+            var partida = _contextDb.Partidas.Where(x => x.PartidaId == idPartida).Where(x=> string.Equals(password,x.Password)).First();
             return partida;
         }
     }

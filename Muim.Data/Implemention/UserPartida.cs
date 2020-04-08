@@ -34,5 +34,7 @@ namespace Muim.Data.Implemention
             var partida = _contextDb.PartidaUsuario.Where(x => x.UserId == id).ToList();
             return partida;    
         }
+
+
     }
 }
