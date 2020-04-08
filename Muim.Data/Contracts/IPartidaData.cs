@@ -7,8 +7,8 @@ namespace Muim.Data.Contracts
     {
         List<Partida> GetAllPartida();
         bool AddPartida(Partida partida);
-        List<Partida> GetPartida(int id);
-        bool UpdatePartida(Partida user);
+        Partida GetPartida(int id);
+        bool UpdatePartida(Partida partida);
         bool DeletePartida(int id);
     }
 }

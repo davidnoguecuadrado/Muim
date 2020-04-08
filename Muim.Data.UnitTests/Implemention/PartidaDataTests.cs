@@ -21,7 +21,7 @@ namespace Muim.Data.Implemention.Unit.Tests
             _partidaData = new Mock<IPartidaData>();
 
             _partidaData.Setup(p => p.AddPartida(It.IsAny<Partida>())).Returns(true);
-            _partidaData.Setup(p => p.GetPartida(It.IsAny<int>())).Returns(_partidas);
+            _partidaData.Setup(p => p.GetPartida(It.IsAny<int>())).Returns(_partida);
             _partidaData.Setup(p => p.DeletePartida(It.IsAny<int>())).Returns(true);
             _partidaData.Setup(p => p.GetAllPartida()).Returns(_partidas);
             _partidaData.Setup(p => p.UpdatePartida(It.IsAny<Partida>())).Returns(true);
@@ -29,33 +29,38 @@ namespace Muim.Data.Implemention.Unit.Tests
         }
 
         [TestMethod()]
-        public void AddPartidaTest()
+        public void GetUserTest()
         {
-            Assert.Fail();
+            var userGet = _partidaData.Object.GetPartida(1);
+            Assert.IsTrue(userGet.Equals(_partida));
         }
 
         [TestMethod()]
-        public void DeletePartidaTest()
+        public void DeleteUserTest()
         {
-            Assert.Fail();
+            var result = _partidaData.Object.DeletePartida(1);
+            Assert.IsTrue(result);
         }
 
         [TestMethod()]
-        public void GetAllPartidaTest()
+        public void GetAllUsersTest()
         {
-            Assert.Fail();
+            var userGet = _partidaData.Object.GetAllPartida();
+            Assert.IsTrue(userGet.Equals(_partidas));
         }
 
         [TestMethod()]
-        public void GetPartidaTest()
+        public void AddUserTest()
         {
-            Assert.Fail();
+            var result = _partidaData.Object.AddPartida(_partida);
+            Assert.IsTrue(result);
         }
 
         [TestMethod()]
-        public void UpdatePartidaTest()
+        public void UpdateUserTest()
         {
-            Assert.Fail();
+            var result = _partidaData.Object.UpdatePartida(_partida);
+            Assert.IsTrue(result);
         }
     }
 }

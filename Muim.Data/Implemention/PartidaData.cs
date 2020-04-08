@@ -3,6 +3,7 @@ using Muim.Data.Contracts;
 using Muim.Domain.Context;
 using Muim.Domain.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Muim.Data.Implemention
 {
@@ -23,24 +24,28 @@ namespace Muim.Data.Implemention
         public bool DeletePartida(int id)
         {
             var partida = _contextDb.Partidas.Find(id);
-            _contextDb.Users.Remove(partida);
+            _contextDb.Partidas.Remove(partida);
             _contextDb.SaveChanges();
             return true;
         }
 
         public List<Partida> GetAllPartida()
         {
-            throw new System.NotImplementedException();
+            var users = _contextDb.Partidas.ToList();
+            return users;
         }
 
-        public bool UpdatePartida(Partida user)
+        public bool UpdatePartida(Partida partida)
         {
-            throw new System.NotImplementedException();
+            _contextDb.Partidas.Update(partida);
+            _contextDb.SaveChanges();
+            return true;
         }
 
-        public List<Partida> GetPartida(int id)
+        public Partida GetPartida(int id)
         {
-            throw new System.NotImplementedException();
+            var partida = _contextDb.Partidas.Find(id);
+            return partida;
         }
     }
 }
