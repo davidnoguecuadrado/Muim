@@ -6,21 +6,19 @@ namespace Muim.Aplication.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PartidaController : ControllerBase
+    public class AddUserPartidaPasswordController : ControllerBase
     {
-
         private readonly IPartidaUsuarios _partidoUser;
 
-        public PartidaController(IPartidaUsuarios partidoUser)
+        public AddUserPartidaPasswordController(IPartidaUsuarios partidoUser)
         {
             _partidoUser = partidoUser;
         }
 
         [HttpPost("{id}")]
-        public bool Post([FromBody]Partida partida,int id)
+        public bool Post([FromBody]Partida partida, int id)
         {
-            return _partidoUser.CreatePartida(partida, id);
+            return _partidoUser.AddTheUser(id, partida);
         }
-      
     }
 }

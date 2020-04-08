@@ -24,14 +24,14 @@ namespace Muim.Service.Implementation.Unit.Tests
         }
 
         [TestMethod()]
-        public void AddAdminTest()
+        public void AddTheUserTest()
         {
             var result = _partidaUsuario.Object.AddTheUser(1, _partida);
             Assert.IsTrue(result);
         }
 
         [TestMethod()]
-        public void AddTheUserTest()
+        public void AddAdminTest()
         {
             var result = _partidaUsuario.Object.AddAdmin(1,1,1);
             Assert.IsTrue(result);

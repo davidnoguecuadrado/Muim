@@ -33,7 +33,7 @@ namespace Muim.Service.Implementation
 
         public bool AddTheUser(int idUsuario, Partida partida)
         {
-            var part = _partidaData.AddPartidaPassword(partida.Password,partida.PartidaId);
+            var part = _partidaData.AddPartidaPassword(partida.Password,partida.Name);
             if (part != null)
             {
                 PartidaUsuario pu = new PartidaUsuario();

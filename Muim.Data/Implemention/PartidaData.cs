@@ -48,9 +48,9 @@ namespace Muim.Data.Implemention
             return partida;
         }
 
-        public Partida AddPartidaPassword(string password,int idPartida)
+        public Partida AddPartidaPassword(string password,string name)
         {
-            var partida = _contextDb.Partidas.Where(x => x.PartidaId == idPartida).Where(x=> string.Equals(password,x.Password)).First();
+            var partida = _contextDb.Partidas.Where(x => x.Name == name).Where(x=> string.Equals(password,x.Password)).First();
             return partida;
         }
     }
