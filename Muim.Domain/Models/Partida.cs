@@ -7,6 +7,8 @@ namespace Muim.Domain.Models
     public class Partida
     {
         public int PartidaId { get; set; }
-        public string Name { get; set; } 
+        public string Name { get; set; }
+        public string Password { get; set; }
+
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Muim.Domain.Migrations
 {
-    public partial class muimdb : Migration
+    public partial class muim11 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -68,7 +68,8 @@ namespace Muim.Domain.Migrations
                 {
                     PartidaId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -116,19 +117,18 @@ namespace Muim.Domain.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<int>(nullable: false),
-                    ParitdaId = table.Column<int>(nullable: false),
-                    PartidaId = table.Column<int>(nullable: true),
+                    PartidaId = table.Column<int>(nullable: false),
                     Rol = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PartidaUsuario", x => new { x.UserId, x.ParitdaId });
+                    table.PrimaryKey("PK_PartidaUsuario", x => new { x.UserId, x.PartidaId });
                     table.ForeignKey(
                         name: "FK_PartidaUsuario_Partidas_PartidaId",
                         column: x => x.PartidaId,
                         principalTable: "Partidas",
                         principalColumn: "PartidaId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PartidaUsuario_Users_UserId",
                         column: x => x.UserId,
@@ -332,18 +332,17 @@ namespace Muim.Domain.Migrations
                 {
                     PersonajeId = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: false),
-                    ParitdaId = table.Column<int>(nullable: false),
-                    PartidaId = table.Column<int>(nullable: true)
+                    PartidaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pup", x => new { x.ParitdaId, x.PersonajeId, x.UserId });
+                    table.PrimaryKey("PK_Pup", x => new { x.PartidaId, x.PersonajeId, x.UserId });
                     table.ForeignKey(
                         name: "FK_Pup_Partidas_PartidaId",
                         column: x => x.PartidaId,
                         principalTable: "Partidas",
                         principalColumn: "PartidaId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Pup_Personajes_PersonajeId",
                         column: x => x.PersonajeId,
@@ -454,11 +453,6 @@ namespace Muim.Domain.Migrations
                 name: "IX_PersonajesCapacidades_PersonajeId",
                 table: "PersonajesCapacidades",
                 column: "PersonajeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Pup_PartidaId",
-                table: "Pup",
-                column: "PartidaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pup_PersonajeId",

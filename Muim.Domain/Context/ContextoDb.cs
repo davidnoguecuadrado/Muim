@@ -37,8 +37,8 @@ namespace Muim.Domain.Context
             modelBuilder.Entity<PersonajeHabilidadPasivas>().HasKey(x => new { x.HabilidadPasivaId, x.PersonajeId });
             modelBuilder.Entity<PersonajesCapacidades>().HasKey(x => new { x.CapacidadId, x.PersonajeId });
             modelBuilder.Entity<MagiaPersonajes>().HasKey(x => new { x.PersonajeId, x.MagiaId });
-            modelBuilder.Entity<PartidaUsuario>().HasKey(x => new { x.UserId, x.ParitdaId });
-            modelBuilder.Entity<PUP>().HasKey(x => new { x.ParitdaId, x.PersonajeId,x.UserId });
+            modelBuilder.Entity<PartidaUsuario>().HasKey(x => new { x.UserId, x.PartidaId });
+            modelBuilder.Entity<PUP>().HasKey(x => new { x.PartidaId, x.PersonajeId,x.UserId });
             modelBuilder.Entity<ClassCharacterCpacidades>().HasKey(x => new { x.CapacidadId, x.ClassCharacterId });
             modelBuilder.Entity<User>().HasKey(x => new { x.UserId });
 

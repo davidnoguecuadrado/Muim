@@ -175,7 +175,7 @@ namespace Muim.Domain.Migrations
 
             modelBuilder.Entity("Muim.Domain.Models.PUP", b =>
                 {
-                    b.Property<int>("ParitdaId")
+                    b.Property<int>("PartidaId")
                         .HasColumnType("int");
 
                     b.Property<int>("PersonajeId")
@@ -184,12 +184,7 @@ namespace Muim.Domain.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PartidaId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ParitdaId", "PersonajeId", "UserId");
-
-                    b.HasIndex("PartidaId");
+                    b.HasKey("PartidaId", "PersonajeId", "UserId");
 
                     b.HasIndex("PersonajeId");
 
@@ -208,6 +203,9 @@ namespace Muim.Domain.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("PartidaId");
 
                     b.ToTable("Partidas");
@@ -218,16 +216,13 @@ namespace Muim.Domain.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ParitdaId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PartidaId")
+                    b.Property<int>("PartidaId")
                         .HasColumnType("int");
 
                     b.Property<int>("Rol")
                         .HasColumnType("int");
 
-                    b.HasKey("UserId", "ParitdaId");
+                    b.HasKey("UserId", "PartidaId");
 
                     b.HasIndex("PartidaId");
 
@@ -512,7 +507,9 @@ namespace Muim.Domain.Migrations
                 {
                     b.HasOne("Muim.Domain.Models.Partida", "Partida")
                         .WithMany()
-                        .HasForeignKey("PartidaId");
+                        .HasForeignKey("PartidaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Muim.Domain.Models.Personaje", "Personaje")
                         .WithMany()
@@ -531,7 +528,9 @@ namespace Muim.Domain.Migrations
                 {
                     b.HasOne("Muim.Domain.Models.Partida", "Partida")
                         .WithMany()
-                        .HasForeignKey("PartidaId");
+                        .HasForeignKey("PartidaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Muim.Domain.Models.User", "User")
                         .WithMany()

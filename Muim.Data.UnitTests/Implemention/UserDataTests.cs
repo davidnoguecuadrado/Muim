@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace Muim.Data.UnitTests
 {
     [TestClass()]
-    public class UserDataTests
+    public class PartidaDataTests
     {
         private Mock<IUserData> _useData;
         private User _user;
