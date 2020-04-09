@@ -5,6 +5,7 @@ namespace Muim.Service.Contracts
 {
     public interface IUserService
     {
+        List<User> GwtUserWithPassword(User user);
         List<User> GetAllUsers();
         bool AddUser(User user);
         User GetUser(int id);

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Muim.Domain.Models;
+using Muim.Service.Contracts;
 
 namespace Muim.Aplication.Controllers
 {
@@ -13,11 +14,13 @@ namespace Muim.Aplication.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private IConfiguration _config;
+        private readonly IConfiguration _config;
+        private readonly IUserService _serviceUser;
 
-        public LoginController(IConfiguration config)
+        public LoginController(IConfiguration config, IUserService serviceUser)
         {
             _config = config;
+            _serviceUser = serviceUser;
         }
         [AllowAnonymous]
         [HttpPost]
@@ -25,6 +28,7 @@ namespace Muim.Aplication.Controllers
         {
             IActionResult response = Unauthorized();
             var user = AuthenticateUser(login);
+
 
             if (user != null)
             {
@@ -57,9 +61,9 @@ namespace Muim.Aplication.Controllers
 
             //Validate the User Credentials  
             //Demo Purpose, I have Passed HardCoded User Information  
-            if (login.Name == "Jignesh")
+            if (_serviceUser.GwtUserWithPassword(login).Count > 0)
             {
-                user = new User { Name = "Jignesh Trivedi"};
+                user = login;
             }
             return user;
         }

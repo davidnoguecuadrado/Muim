@@ -6,6 +6,7 @@ namespace Muim.Data.Contracts
 {
     public interface IUserData
     {
+        List<User> GwtUserWithPassword(User user);
         List<User> GetAllUsers();
         bool AddUser(User user);
         User GetUser(int id);

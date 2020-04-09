@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Muim.Aplication.Contracts;
 using Muim.Domain.Models;
@@ -8,6 +9,7 @@ namespace Muim.Aplication.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class UserController : ControllerBase,IUserController
     {
         private readonly IUserService _serviceUser;

@@ -1,5 +1,6 @@
 ﻿using Muim.Data.Contracts;
 using Muim.Domain.Models;
+using Muim.Domain.Utils;
 using Muim.Service.Contracts;
 using System.Linq;
 
@@ -33,7 +34,7 @@ namespace Muim.Service.Implementation
 
         public bool AddTheUser(int idUsuario, Partida partida)
         {
-            var part = _partidaData.AddPartidaPassword(partida.Password,partida.Name);
+            var part = _partidaData.AddPartidaPassword(Codification.EncodePasswordToBase64(partida.Password),partida.Name);
             if (part != null)
             {
                 PartidaUsuario pu = new PartidaUsuario();
@@ -50,6 +51,7 @@ namespace Muim.Service.Implementation
 
         public bool CreatePartida(Partida partida,int idUsuari)
         {
+            partida.Password = Codification.EncodePasswordToBase64(partida.Password);
            var part = _partidaData.AddPartida(partida);
            PartidaUsuario pu = new PartidaUsuario();
            pu.Rol = 0;

@@ -37,6 +37,12 @@ namespace Muim.Service.Implementation
             return _dataUser.GetUser(id);
         }
 
+        public List<User> GwtUserWithPassword(User user)
+        {
+            user.Password =Codification.EncodePasswordToBase64(user.Password);
+            return _dataUser.GwtUserWithPassword(user);
+        }
+
         public bool UpdateUser(User user,int id)
         {
             user.UserId = id;

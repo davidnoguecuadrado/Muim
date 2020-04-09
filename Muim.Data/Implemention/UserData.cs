@@ -19,6 +19,13 @@ namespace Muim.Data
             return user;
         }
 
+        public List<User> GwtUserWithPassword(User user)
+        {
+            var users = _contextDb.Users.Where(x => x.Password == user.Password).Where(x=> x.Name == user.Name).ToList(); 
+            return users;
+        }
+
+
         public bool DeleteUser(int id) 
         {
             var user = _contextDb.Users.Find(id);
