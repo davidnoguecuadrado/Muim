@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Muim.Data;
 using Muim.Data.Contracts;
 using Muim.Data.Implemention;
@@ -50,14 +51,26 @@ namespace Muim.Aplication
             services.AddTransient<IUserPartida, UserPartida>();
             services.AddTransient<IPartidaUsuarios, PartidaUsuarios>();
 
-            services.AddDbContext<ContextoDb>(o => o.UseSqlServer("Server =.; Database = Muimdb; User Id = sa; password = yourStrong(!)Password; Trusted_Connection = False; MultipleActiveResultSets = true"));
+            services.AddDbContext<ContextoDb>(o => o.UseSqlServer("Server = tcp:muimdbserver.database.windows.net, 1433; Initial Catalog = muimDb; Persist Security Info = False; User ID = david; Password =Pass(!)Word; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;"));
             
             services.AddControllers();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
             app.UseAuthentication();
 
             if (env.IsDevelopment())
