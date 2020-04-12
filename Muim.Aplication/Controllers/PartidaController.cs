@@ -17,9 +17,9 @@ namespace Muim.Aplication.Controllers
         }
 
         [HttpPost("{id}")]
-        public bool Post([FromBody]Partida partida,int id)
+        public bool Post([FromBody]Partida partida,int idUsuario)
         {
-            return _partidoUser.CreatePartida(partida, id);
+            return _partidoUser.CreatePartida(partida, idUsuario);
         }
       
     }
