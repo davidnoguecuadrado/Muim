@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Muim.Domain.Context;
 
 namespace Muim.Domain.Migrations
 {
     [DbContext(typeof(ContextoDb))]
-    partial class ContextoDbModelSnapshot : ModelSnapshot
+    [Migration("20200412194909_muim31")]
+    partial class muim31
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -588,7 +590,7 @@ namespace Muim.Domain.Migrations
             modelBuilder.Entity("Muim.Domain.Models.Tipo", b =>
                 {
                     b.HasOne("Muim.Domain.Models.Raza", "Raza")
-                        .WithMany()
+                        .WithMany("Tipos")
                         .HasForeignKey("RazaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

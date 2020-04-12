@@ -57,7 +57,8 @@ namespace Muim.Aplication
             services.AddTransient<IMagicService, MagiaService>();
             services.AddTransient<IMagiaPersonajesData, MagiaPersonajesData>();
             services.AddTransient<IMagiaPersonajesService, MagiaPersonajesService>();
-
+            services.AddTransient<IRazaData, RazaData>();
+            services.AddTransient<IRazaService, RazaService>();
 
             services.AddDbContext<ContextoDb>(o => o.UseSqlServer("Server = tcp:muimdbserver.database.windows.net, 1433; Initial Catalog = muimDb; Persist Security Info = False; User ID = david; Password =Pass(!)Word; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;"));
             
