@@ -1,6 +1,4 @@
 ﻿
-using System.Collections.Generic;
-
 namespace Muim.Domain.Models
 {
     public class Tipo
