@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations.Operations;
-using Muim.Data.Contracts;
+﻿using Muim.Data.Contracts;
 using Muim.Domain.Context;
 using Muim.Domain.Models;
 

@@ -73,8 +73,15 @@ namespace Muim.Aplication
             services.AddTransient<IEquipoService, EquipoService>();
             services.AddTransient<IPersonajesCapacidadesData, PersonajesCapacidadesData>();
             services.AddTransient<IPersonajesCapacidadesService, PersonajesCapacidadesService>();
+            services.AddTransient<IPersonajeHabilidadActivaData, PersonajeHabilidadActivaData>();
+            services.AddTransient<IPersonajeHabilidadActivaService, PersonajeHabilidadActivaService>();
+            services.AddTransient<IPersonajeHabilidadPasivasData, PersonajeHabilidadPasivasData>();
+            services.AddTransient<IPersonajeHabilidadPasivasService, PersonajeHabilidadPasivasService>();
+            services.AddTransient<IClassCharacterCpacidadesData, ClassCharacterCpacidadesData>();
+            services.AddTransient<IClassCharacterCpacidadesService, ClassCharacterCpacidadesService>();
 
             
+
             services.AddDbContext<ContextoDb>(o => o.UseSqlServer("Server = tcp:muimdbserver.database.windows.net, 1433; Initial Catalog = muimDb; Persist Security Info = False; User ID = david; Password =Pass(!)Word; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;"));
             
             services.AddControllers();

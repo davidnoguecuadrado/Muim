@@ -21,6 +21,7 @@ namespace Muim.Aplication.Controllers
         {
             return _partidoUser.CreatePartida(partida, idUsuario);
         }
-      
+       
+
     }
 }
