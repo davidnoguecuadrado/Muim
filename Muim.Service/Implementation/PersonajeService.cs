@@ -27,7 +27,7 @@ namespace Muim.Service.Implementation
             pup.PersonajeId = per.PersonajeId;
             pup.UserId = idUser;
             pup.PartidaId = idPartida;
-            var classCharacterCpacidades=_classCharacterCpacidadesData.GetPersonajesCapacidades(per.ClassCharacterId.GetValueOrDefault());
+            var classCharacterCpacidades=_classCharacterCpacidadesData.GetClassCharacterCapacidades(per.ClassCharacterId.GetValueOrDefault());
             foreach (var clases in classCharacterCpacidades) {
                 personajesCapacidades.CapacidadId = clases.CapacidadId;
                 personajesCapacidades.PersonajeId = per.PersonajeId;
