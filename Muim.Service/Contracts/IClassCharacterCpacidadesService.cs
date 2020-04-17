@@ -5,7 +5,7 @@ namespace Muim.Service.Contracts
 {
     public interface IClassCharacterCpacidadesService
     {
-        public bool AddPersonajesCapacidades(ClassCharacterCapacidades classCharacterCpacidades);
-        public bool DeletePersonajesCapacidades(ClassCharacterCapacidades classCharacterCpacidades);
+        public bool AddClassCharacterCapacidades(ClassCharacterCapacidades classCharacterCpacidades);
+        public bool DeleteClassCharacterCapacidades(ClassCharacterCapacidades classCharacterCpacidades);
     }
 }

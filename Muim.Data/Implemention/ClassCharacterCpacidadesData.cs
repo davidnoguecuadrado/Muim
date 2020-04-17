@@ -15,17 +15,17 @@ namespace Muim.Data.Implemention
             _contextDb = contextDb;
         }
 
-        public bool AddPersonajesCapacidades(ClassCharacterCapacidades classCharacterCpacidades)
+        public bool AddClassCharacterCapacidades(ClassCharacterCapacidades classCharacterCpacidades)
         {
             _contextDb.ClassCharacterCpacidades.Add(classCharacterCpacidades);
             return true;
         }
-        public bool DeletePersonajesCapacidades(ClassCharacterCapacidades classCharacterCpacidades)
+        public bool DeleteClassCharacterCapacidades(ClassCharacterCapacidades classCharacterCpacidades)
         {
             _contextDb.ClassCharacterCpacidades.Remove(classCharacterCpacidades);
             return true;
         }
-        public List<ClassCharacterCapacidades> GetPersonajesCapacidades(int classcharacterId)
+        public List<ClassCharacterCapacidades> GetClassCharacterCapacidades(int classcharacterId)
         {
             var classCharacterCpacidades = _contextDb.ClassCharacterCpacidades.Where(x => x.ClassCharacterId == classcharacterId).ToList();
             return classCharacterCpacidades;
