@@ -9,20 +9,31 @@ namespace Muim.Service.Implementation
     {
         private readonly IPupData _pupdata;
         private readonly IPersonajeData _personaje;
+        private readonly IClassCharacterCpacidadesData _classCharacterCpacidadesData;
+        private readonly IPersonajesCapacidadesData _personajesCapacidadesData;
 
-        public PersonajeService(IPupData pupdata, IPersonajeData personaje)
+        public PersonajeService(IPupData pupdata, IPersonajeData personaje, IClassCharacterCpacidadesData classCharacterCpacidadesData, IPersonajesCapacidadesData personajesCapacidadesData)
         {
             _pupdata = pupdata;
             _personaje = personaje;
-
+            _classCharacterCpacidadesData = classCharacterCpacidadesData;
+            _personajesCapacidadesData = personajesCapacidadesData;
         }
         public bool AddPersonaje(Personaje personaje,int idUser,int idPartida)
         {
             var per = _personaje.AddPersonaje(personaje);
             PUP pup = new PUP();
+            PersonajesCapacidades personajesCapacidades = new PersonajesCapacidades();
             pup.PersonajeId = per.PersonajeId;
             pup.UserId = idUser;
             pup.PartidaId = idPartida;
+            var classCharacterCpacidades=_classCharacterCpacidadesData.GetPersonajesCapacidades(per.ClassCharacterId.GetValueOrDefault());
+            foreach (var clases in classCharacterCpacidades) {
+                personajesCapacidades.CapacidadId = clases.CapacidadId;
+                personajesCapacidades.PersonajeId = per.PersonajeId;
+                personajesCapacidades.Nivel = 1;
+                _personajesCapacidadesData.AddPersonajesCapacidades(personajesCapacidades);
+            }
             _pupdata.Add(pup);
             return true;
         }
