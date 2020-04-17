@@ -15,11 +15,11 @@ namespace Muim.Service.Implementation
 
         }
 
-        public bool AddPersonajesCapacidades(ClassCharacterCpacidades classCharacterCpacidades)
+        public bool AddPersonajesCapacidades(ClassCharacterCapacidades classCharacterCpacidades)
         {
             return _classCharacterCpacidadesData.AddPersonajesCapacidades(classCharacterCpacidades);
         }
-        public bool DeletePersonajesCapacidades(ClassCharacterCpacidades classCharacterCpacidades)
+        public bool DeletePersonajesCapacidades(ClassCharacterCapacidades classCharacterCpacidades)
         {
             return _classCharacterCpacidadesData.DeletePersonajesCapacidades(classCharacterCpacidades);
         }

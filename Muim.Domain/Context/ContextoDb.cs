@@ -29,7 +29,7 @@ namespace Muim.Domain.Context
         public DbSet<PartidaUsuario> PartidaUsuario { get; set; }
         public DbSet<ClassCharacter> ClassCharacter { get; set; }
 
-        public DbSet<ClassCharacterCpacidades> ClassCharacterCpacidades { get; set; }
+        public DbSet<ClassCharacterCapacidades> ClassCharacterCpacidades { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
@@ -39,7 +39,7 @@ namespace Muim.Domain.Context
             modelBuilder.Entity<MagiaPersonajes>().HasKey(x => new { x.PersonajeId, x.MagiaId });
             modelBuilder.Entity<PartidaUsuario>().HasKey(x => new { x.UserId, x.PartidaId });
             modelBuilder.Entity<PUP>().HasKey(x => new { x.PartidaId, x.PersonajeId,x.UserId });
-            modelBuilder.Entity<ClassCharacterCpacidades>().HasKey(x => new { x.CapacidadId, x.ClassCharacterId });
+            modelBuilder.Entity<ClassCharacterCapacidades>().HasKey(x => new { x.CapacidadId, x.ClassCharacterId });
             modelBuilder.Entity<User>().HasKey(x => new { x.UserId });
 
         }

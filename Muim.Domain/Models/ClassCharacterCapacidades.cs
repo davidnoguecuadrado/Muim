@@ -1,7 +1,7 @@
 ﻿
 namespace Muim.Domain.Models
 {
-    public class ClassCharacterCpacidades
+    public class ClassCharacterCapacidades
     {
         public Capacidad Capacidad { get; set; }
         public ClassCharacter ClassCharacter { get; set; }

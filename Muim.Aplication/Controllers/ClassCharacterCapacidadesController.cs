@@ -7,25 +7,25 @@ namespace Muim.Aplication.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClassCharacterCpacidadesController : ControllerBase
+    public class ClassCharacterCapacidadesController : ControllerBase
     {
         private readonly IClassCharacterCpacidadesService _classCharacterCpacidadesService;
 
-        public ClassCharacterCpacidadesController(IClassCharacterCpacidadesService classCharacterCpacidades)
+        public ClassCharacterCapacidadesController(IClassCharacterCpacidadesService classCharacterCpacidades)
         {
             _classCharacterCpacidadesService = classCharacterCpacidades;
         }
 
         // POST: api/User
         [HttpPost]
-        public bool Post([FromBody] ClassCharacterCpacidades classCharacterCpacidades)
+        public bool Post([FromBody] ClassCharacterCapacidades classCharacterCpacidades)
         {
             return _classCharacterCpacidadesService.AddPersonajesCapacidades(classCharacterCpacidades);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete]
-        public bool Delete([FromBody] ClassCharacterCpacidades personajeHabilidadActiva)
+        public bool Delete([FromBody] ClassCharacterCapacidades personajeHabilidadActiva)
         {
             return _classCharacterCpacidadesService.DeletePersonajesCapacidades(personajeHabilidadActiva);
         }

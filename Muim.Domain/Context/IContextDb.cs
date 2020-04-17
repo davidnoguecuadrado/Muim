@@ -25,7 +25,7 @@ namespace Muim.Domain.Context
         DbSet<PartidaUsuario> PartidaUsuario { get; set; }
         DbSet<ClassCharacter> ClassCharacter { get; set; }
 
-        public DbSet<ClassCharacterCpacidades> ClassCharacterCpacidades { get; set; }
+        public DbSet<ClassCharacterCapacidades> ClassCharacterCpacidades { get; set; }
 
         int SaveChanges();
     

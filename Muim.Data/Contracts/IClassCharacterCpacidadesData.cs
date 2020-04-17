@@ -7,8 +7,8 @@ namespace Muim.Data.Contracts
     public interface IClassCharacterCpacidadesData
     {
 
-        public bool AddPersonajesCapacidades(ClassCharacterCpacidades classCharacterCpacidades);
-        public bool DeletePersonajesCapacidades(ClassCharacterCpacidades classCharacterCpacidades);
-        List<ClassCharacterCpacidades> GetPersonajesCapacidades(int classcharacterId);
+        public bool AddPersonajesCapacidades(ClassCharacterCapacidades classCharacterCpacidades);
+        public bool DeletePersonajesCapacidades(ClassCharacterCapacidades classCharacterCpacidades);
+        List<ClassCharacterCapacidades> GetPersonajesCapacidades(int classcharacterId);
     }
 }
