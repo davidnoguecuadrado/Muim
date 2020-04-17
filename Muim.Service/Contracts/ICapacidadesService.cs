@@ -11,7 +11,7 @@ namespace Muim.Service.Contracts
 
         public List<Capacidad> GetAllCapacidades();
 
-        public Capacidad GetCapacidades(int id);
+        public Dictionary<Capacidad, int> GetCapacidades(int idPersonaje);
 
         public bool UpdateCapacidades(Capacidad capacidad, int idUsuario);
     }

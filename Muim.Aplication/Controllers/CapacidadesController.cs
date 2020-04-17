@@ -25,7 +25,7 @@ namespace Muim.Aplication.Controllers
 
         // GET: api/User/5
         [HttpGet("{id}")]
-        public Capacidad Get(int id)
+        public Dictionary<Capacidad, int> Get(int id)
         {
             return _capacidadesService.GetCapacidades(id);
         }

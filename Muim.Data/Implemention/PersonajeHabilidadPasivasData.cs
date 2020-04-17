@@ -2,6 +2,8 @@
 using Muim.Data.Contracts;
 using Muim.Domain.Context;
 using Muim.Domain.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Muim.Data.Implemention
 {
@@ -22,6 +24,11 @@ namespace Muim.Data.Implemention
         {
             _contextDb.PersonajeHabilidadPasivas.Remove(personajeHabilidadPasivas);
             return true;
+        }
+        public List<PersonajeHabilidadPasivas> GetPersonajeHabilidadPasivas(int personajeId)
+        {
+            var magias = _contextDb.PersonajeHabilidadPasivas.Where(x => x.PersonajeId == personajeId).ToList();
+            return magias;
         }
     }
 }

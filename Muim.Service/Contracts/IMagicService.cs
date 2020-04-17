@@ -9,7 +9,7 @@ namespace Muim.Service.Contracts
     {
         List<Magia> GetAllMagia();
         bool AddMagia(Magia user, int idUsuario);
-        Magia GetMagia(int id);
+        Dictionary<Magia, int> GetMagia(int id);
         bool UpdateMagia(Magia user, int idUsuario);
         bool DeleteMagia(int id, int idUsuario);
     }

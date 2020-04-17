@@ -2,6 +2,7 @@
 using Muim.Data.Contracts;
 using Muim.Domain.Models;
 using Muim.Service.Contracts;
+using System.Collections.Generic;
 
 namespace Muim.Service.Implementation
 {
@@ -23,5 +24,6 @@ namespace Muim.Service.Implementation
         {
             return _classCharacterCpacidadesData.DeletePersonajeHabilidadActiva(classCharacterCpacidades);
         }
+
     }
 }

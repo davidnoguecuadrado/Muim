@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Muim.Domain.Models;
 using Muim.Service.Contracts;
@@ -28,6 +29,14 @@ namespace Muim.Aplication.Controllers
         public bool Delete([FromBody] PersonajeHabilidadActiva personajeHabilidadActiva)
         {
             return _personajeHabilidadActivaService.DeletePersonajesCapacidades(personajeHabilidadActiva);
+        }
+
+
+        // GET: api/User/5
+        [HttpGet("{id}")]
+        public List<PersonajeHabilidadActiva> Get(int id)
+        {
+            return _personajeHabilidadActivaService.GetPersonajeHabilidadActiva(id);
         }
     }
 }

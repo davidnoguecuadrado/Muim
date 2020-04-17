@@ -80,9 +80,7 @@ namespace Muim.Aplication
             services.AddTransient<IClassCharacterCpacidadesData, ClassCharacterCpacidadesData>();
             services.AddTransient<IClassCharacterCpacidadesService, ClassCharacterCpacidadesService>();
 
-            
-
-            services.AddDbContext<ContextoDb>(o => o.UseSqlServer("Server = tcp:muimdbserver.database.windows.net, 1433; Initial Catalog = muimDb; Persist Security Info = False; User ID = david; Password =Pass(!)Word; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;"));
+            services.AddDbContext<ContextoDb>(o => o.UseSqlServer(Configuration.GetConnectionString("MembersDatabase")));
             
             services.AddControllers();
 

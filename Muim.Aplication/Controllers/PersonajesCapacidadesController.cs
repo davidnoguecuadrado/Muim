@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Muim.Domain.Models;
 using Muim.Service.Contracts;
+using System.Collections.Generic;
 
 namespace Muim.Aplication.Contracts
 {
@@ -27,6 +28,13 @@ namespace Muim.Aplication.Contracts
         public bool Delete([FromBody] PersonajesCapacidades personajesCapacidades)
         {
             return _personajesCapacidadesService.DeletePersonajesCapacidades(personajesCapacidades);
+        }
+
+        // GET: api/User/5
+        [HttpGet("{id}")]
+        public List<PersonajesCapacidades> Get(int id)
+        {
+            return _personajesCapacidadesService.GetPersonajesCapacidades(id);
         }
     }
 }

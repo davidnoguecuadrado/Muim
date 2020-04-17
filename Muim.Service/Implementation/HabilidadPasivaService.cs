@@ -9,12 +9,13 @@ namespace Muim.Service.Implementation
     {
         private readonly IUserData _dataUser;
         private readonly IHabilidadPasivaData _habilidadPasivaData;
+        private readonly IPersonajeHabilidadPasivasData _personajeHabilidadPasivasData;
 
-        public HabilidadPasivaService(IUserData dataUser, IHabilidadPasivaData habilidadPasivaData)
+        public HabilidadPasivaService(IUserData dataUser, IHabilidadPasivaData habilidadPasivaData, IPersonajeHabilidadPasivasData personajeHabilidadPasivasData)
         {
             _dataUser = dataUser;
             _habilidadPasivaData = habilidadPasivaData;
-
+            _personajeHabilidadPasivasData = personajeHabilidadPasivasData;
         }
         public bool AddHabilidadPasiva(HabilidadPasiva habilidadPasiva, int idUsuario)
         {
@@ -44,10 +45,16 @@ namespace Muim.Service.Implementation
             return habilidadPasivas;
         }
 
-        public HabilidadPasiva GetHabilidadPasiva(int id)
+        public Dictionary<HabilidadPasiva, int> GetHabilidadPasiva(int idPersonaje)
         {
-            var habilidadPasiva = _habilidadPasivaData.GetHabilidadPasiva(id);
-            return habilidadPasiva;
+            Dictionary<HabilidadPasiva, int> habilidades = new Dictionary<HabilidadPasiva, int>();
+            var habilidadesPersonase = _personajeHabilidadPasivasData.GetPersonajeHabilidadPasivas(idPersonaje);
+            foreach (var hab in habilidadesPersonase)
+            {
+                var ma = _habilidadPasivaData.GetHabilidadPasiva(hab.HabilidadPasivaId);
+                habilidades.Add(ma, hab.Nivel);
+            }
+            return habilidades;
         }
 
         public bool UpdateHabilidadPasiva(HabilidadPasiva habilidadPasiva, int idUsuario)

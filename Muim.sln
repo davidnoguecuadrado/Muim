@@ -27,9 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Muim.Data.ItegrationTests",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Muim.Data.UnitTests", "Muim.Data.UnitTests\Muim.Data.UnitTests.csproj", "{FD67E92B-BD1F-49A7-95DB-036247EDE495}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Muim.Service.Unit.Tests", "Muim.Service.Unit.Tests\Muim.Service.Unit.Tests.csproj", "{17141729-9CC7-4D4C-9478-2DC33A241351}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Muim.Service.Unit.Tests", "Muim.Service.Unit.Tests\Muim.Service.Unit.Tests.csproj", "{17141729-9CC7-4D4C-9478-2DC33A241351}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Muim.Aplication.Unit.Tests", "Muim.Aplication.Unit.Tests\Muim.Aplication.Unit.Tests.csproj", "{7CC89D08-E423-4CCD-9459-D7D22695F2B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Muim.Aplication.Unit.Tests", "Muim.Aplication.Unit.Tests\Muim.Aplication.Unit.Tests.csproj", "{7CC89D08-E423-4CCD-9459-D7D22695F2B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

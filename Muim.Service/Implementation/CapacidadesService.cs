@@ -9,12 +9,13 @@ namespace Muim.Service.Implementation
     {
         private readonly IUserData _dataUser;
         private readonly ICapacidadesData _dataCapacidades;
+        private readonly IPersonajesCapacidadesData _personajesCapacidadesData;
 
-        public CapacidadesService(IUserData dataUser, ICapacidadesData capacidadesData)
+        public CapacidadesService(IUserData dataUser, ICapacidadesData capacidadesData, IPersonajesCapacidadesData personajesCapacidadesData)
         {
             _dataUser = dataUser;
             _dataCapacidades = capacidadesData;
-
+            _personajesCapacidadesData = personajesCapacidadesData;
         }
         public bool AddCapacidades(Capacidad capacidad, int idUsuario)
         {
@@ -44,9 +45,15 @@ namespace Muim.Service.Implementation
             return capacidads;
         }
 
-        public Capacidad GetCapacidades(int id)
+        public Dictionary<Capacidad, int> GetCapacidades(int idPersonaje)
         {
-            var capacidad = _dataCapacidades.GetCapacidad(id);
+            Dictionary<Capacidad, int> capacidad = new Dictionary<Capacidad, int>();
+            var capacidadPersonase = _personajesCapacidadesData.GetPersonajesCapacidades(idPersonaje);
+            foreach (var hab in capacidadPersonase)
+            {
+                var ma = _dataCapacidades.GetCapacidad(hab.CapacidadId);
+                capacidad.Add(ma, hab.Nivel);
+            }
             return capacidad;
         }
 

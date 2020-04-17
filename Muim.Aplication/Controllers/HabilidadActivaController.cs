@@ -25,9 +25,9 @@ namespace Muim.Aplication.Controllers
 
         // GET: api/User/5
         [HttpGet("{id}")]
-        public HabilidadActiva Get(int id)
+        public Dictionary<HabilidadActiva, int> Get(int idPersonaje)
         {
-            return _habilidadActivaService.GetHabilidadActiva(id);
+            return _habilidadActivaService.GetHabilidadActiva(idPersonaje);
 
         }
 

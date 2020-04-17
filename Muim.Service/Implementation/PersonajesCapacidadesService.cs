@@ -1,6 +1,7 @@
 ﻿using Muim.Data.Contracts;
 using Muim.Domain.Models;
 using Muim.Service.Contracts;
+using System.Collections.Generic;
 
 namespace Muim.Service.Implementation
 {
@@ -21,6 +22,11 @@ namespace Muim.Service.Implementation
         public bool DeletePersonajesCapacidades(PersonajesCapacidades personajesCapacidades)
         {
             return _personajesCapacidadesData.DeletePersonajesCapacidades(personajesCapacidades);
+        }
+
+        public List<PersonajesCapacidades> GetPersonajesCapacidades(int personajeId)
+        {
+            return _personajesCapacidadesData.GetPersonajesCapacidades(personajeId);
         }
 
     }

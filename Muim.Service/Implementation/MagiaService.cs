@@ -8,12 +8,13 @@ namespace Muim.Service.Contracts
     {
         private readonly IUserData _dataUser;
         private readonly IMagiaData _dataMagia;
+        private readonly IMagiaPersonajesService _magiaPersonajesService;
 
-        public MagiaService(IUserData dataUser, IMagiaData magiaData)
+        public MagiaService(IUserData dataUser, IMagiaData magiaData,IMagiaPersonajesService magiaPersonajesService)
         {
             _dataUser = dataUser;
             _dataMagia = magiaData;
-
+            _magiaPersonajesService = magiaPersonajesService;
         }
         public bool AddMagia(Magia magia,int idUsuario)
         {
@@ -43,10 +44,15 @@ namespace Muim.Service.Contracts
             return magia;
         }
 
-        public Magia GetMagia(int id)
+        public Dictionary<Magia, int> GetMagia(int idPersonaje)
         {
-            var magia = _dataMagia.GetMagia(id);
-            return magia;
+           Dictionary<Magia, int> magias = new Dictionary<Magia, int>();
+            var magiaspersonajes=_magiaPersonajesService.GetMagiaPersonajes(idPersonaje);
+            foreach (var magic in magiaspersonajes) {
+                var ma=_dataMagia.GetMagia(magic.MagiaId);
+                magias.Add(ma,magic.Nivel);
+            }
+            return magias;
         }
 
         public bool UpdateMagia(Magia magia, int idUsuario)

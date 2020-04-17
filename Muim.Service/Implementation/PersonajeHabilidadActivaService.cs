@@ -2,6 +2,7 @@
 using Muim.Data.Contracts;
 using Muim.Domain.Models;
 using Muim.Service.Contracts;
+using System.Collections.Generic;
 
 namespace Muim.Service.Implementation
 {
@@ -12,7 +13,6 @@ namespace Muim.Service.Implementation
         public PersonajeHabilidadActivaService(IPersonajeHabilidadActivaData personajeHabilidadActivaData)
         {
             _personajeHabilidadActivaData = personajeHabilidadActivaData;
-
         }
 
         public bool AddPersonajesCapacidades(PersonajeHabilidadActiva personajeHabilidadActiva)
@@ -22,6 +22,10 @@ namespace Muim.Service.Implementation
         public bool DeletePersonajesCapacidades(PersonajeHabilidadActiva personajeHabilidadActiva)
         {
             return _personajeHabilidadActivaData.DeletePersonajeHabilidadActiva(personajeHabilidadActiva);
+        }
+        public List<PersonajeHabilidadActiva> GetPersonajeHabilidadActiva(int personajeId)
+        {
+            return _personajeHabilidadActivaData.GetPersonajeHabilidadActiva(personajeId);
         }
     }
 }

@@ -25,9 +25,9 @@ namespace Muim.Aplication.Controllers
 
         // GET: api/User/5
         [HttpGet("{id}")]
-        public Magia Get(int id)
+        public Dictionary<Magia, int> Get(int idPersonaje)
         {
-            return _serviceMagia.GetMagia(id);
+            return _serviceMagia.GetMagia(idPersonaje);
 
         }
 

@@ -1,5 +1,6 @@
 ﻿
 using Muim.Domain.Models;
+using System.Collections.Generic;
 
 namespace Muim.Data.Contracts
 {
@@ -7,5 +8,7 @@ namespace Muim.Data.Contracts
     {
         public bool AddPersonajeHabilidadActiva(PersonajeHabilidadActiva personajeHabilidadActiva);
         public bool DeletePersonajeHabilidadActiva(PersonajeHabilidadActiva personajeHabilidadActiva);
+        List<PersonajeHabilidadActiva> GetPersonajeHabilidadActiva(int personajeId);
+
     }
 }

@@ -12,7 +12,7 @@ namespace Muim.Service.Contracts
 
         public List<HabilidadPasiva> GetAllHabilidadPasiva();
 
-        public HabilidadPasiva GetHabilidadPasiva(int id);
+        public Dictionary<HabilidadPasiva, int> GetHabilidadPasiva(int id);
 
         public bool UpdateHabilidadPasiva(HabilidadPasiva habilidadPasiva, int idUsuario);
     }
